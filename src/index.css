@@ -1017,7 +1017,9 @@ input[type="number"]:focus {
 .pb-4 {
   padding-bottom: 1rem;
 }
-
+.hidden {
+  visibility: hidden;
+}
 .text-center {
   text-align: center;
 }
