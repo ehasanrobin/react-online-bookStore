@@ -1,10 +1,22 @@
-import { loadbook } from "../booking/actions";
+import { addbook, loadbook, updateBook } from "../booking/actions";
 
-export const updateBook = () => {
+export const updateBookThunk = (bookObj) => {
   return async (dispatch, getState) => {
-    const response = await fetch("http://localhost:9000/books");
-    const data = await response.json();
-    console.log(data);
-    dispatch(loadbook(data));
+    try {
+      const response = await fetch(
+        `http://localhost:9000/books/${bookObj.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(bookObj),
+        }
+      );
+      const data = await response.json();
+      dispatch(updateBook(data));
+    } catch (error) {
+      console.log(error);
+    }
   };
 };

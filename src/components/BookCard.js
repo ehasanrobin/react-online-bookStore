@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deletebook } from "../redux/booking/actions";
+import { deleteBookThunk } from "../redux/thunk/deleteBookThunk";
 
 const BookCard = ({ book, setIsUpdate, handleEdit }) => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const BookCard = ({ book, setIsUpdate, handleEdit }) => {
   }
 
   const handleDelete = (bookId) => {
-    dispatch(deletebook(bookId));
+    dispatch(deleteBookThunk(bookId));
   };
 
   return (

@@ -12,10 +12,10 @@ export const loadbook = (books) => {
     payload: books,
   };
 };
-export const addbook = (book) => {
+export const addbook = (bookObj) => {
   return {
     type: ADDBOOK,
-    payload: book,
+    payload: bookObj,
   };
 };
 

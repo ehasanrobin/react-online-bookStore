@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addbook, updateBook } from "../redux/booking/actions";
+import { addBookThunk } from "../redux/thunk/addBookThunk";
+import { updateBookThunk } from "../redux/thunk/updateBook";
 
 const BookingForm = ({ isUpdate, singledata, setIsUpdate, setSingleData }) => {
   const dispatch = useDispatch();
@@ -31,11 +33,11 @@ const BookingForm = ({ isUpdate, singledata, setIsUpdate, setSingleData }) => {
         rating,
         featured,
       };
-      dispatch(updateBook(data));
+      dispatch(updateBookThunk(data));
       setIsUpdate(false);
       setSingleData(false);
     } else {
-      dispatch(addbook(data));
+      dispatch(addBookThunk(data));
     }
     e.target.reset();
   };

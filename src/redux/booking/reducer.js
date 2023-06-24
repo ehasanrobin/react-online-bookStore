@@ -14,25 +14,10 @@ export const reducer = (state = initialState, action) => {
     case LOADBOOK:
       return action.payload;
     case ADDBOOK:
-      const { bookName, author, thumbnail, price, rating, featured } =
-        action.payload;
-      return [
-        ...state,
-        {
-          id: nextId(state),
-          bookName,
-          author,
-          thumbnail,
-          price,
-          rating,
-          featured,
-        },
-      ];
+      return [...state, action.payload];
 
     case UPDATEBOOK:
       return state.map((book) => {
-        const { bookName, author, thumbnail, price, rating, featured } =
-          action.payload;
         if (book.id !== action.payload.id) {
           return book;
         }
