@@ -4,7 +4,7 @@ import { deletebook } from "../redux/booking/actions";
 
 const BookCard = ({ book, setIsUpdate, handleEdit }) => {
   const dispatch = useDispatch();
-  const { id, bookName, author, price, rating, thumbnail, featured } = book;
+  const { id, name, author, price, rating, thumbnail, featured } = book;
   let ratingArray = [];
   for (let i = 0; i < rating; i++) {
     ratingArray.push(i);
@@ -67,7 +67,7 @@ const BookCard = ({ book, setIsUpdate, handleEdit }) => {
           </div>
 
           <div className="space-y-2 mt-4 h-full">
-            <h4 className="lws-bookName text-left">{bookName}</h4>
+            <h4 className="lws-bookName text-left">{name}</h4>
             <p className="lws-author text-left">{author}</p>
             <div className="lws-stars">
               {ratingArray.map((star) => {

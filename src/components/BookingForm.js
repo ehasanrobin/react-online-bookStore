@@ -6,7 +6,7 @@ const BookingForm = ({ isUpdate, singledata, setIsUpdate, setSingleData }) => {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    const bookName = e.target.name.value;
+    const name = e.target.name.value;
     const author = e.target.author.value;
     const thumbnail = e.target.thumbnail.value;
     const price = e.target.price.value;
@@ -14,7 +14,7 @@ const BookingForm = ({ isUpdate, singledata, setIsUpdate, setSingleData }) => {
     const featured = e.target.featured.checked;
 
     const data = {
-      bookName,
+      name,
       author,
       thumbnail,
       price,
@@ -24,7 +24,7 @@ const BookingForm = ({ isUpdate, singledata, setIsUpdate, setSingleData }) => {
     if (isUpdate === true) {
       const data = {
         id: singledata.id,
-        bookName,
+        name,
         author,
         thumbnail,
         price,
@@ -52,7 +52,7 @@ const BookingForm = ({ isUpdate, singledata, setIsUpdate, setSingleData }) => {
                 required
                 className="text-input"
                 type="text"
-                defaultValue={singledata?.bookName}
+                defaultValue={singledata?.name}
                 id="input-Bookname"
                 name="name"
               />

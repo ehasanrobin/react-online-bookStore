@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filter } from "../redux/filter/actions";
 import BookCard from "./BookCard";
 import BookingForm from "./BookingForm";
+import { loadData } from "../redux/thunk/fetch";
 
 const BookList = ({ search }) => {
   const books = useSelector((state) => state.books);
@@ -10,7 +11,6 @@ const BookList = ({ search }) => {
   const dispatch = useDispatch();
   const [isUpdate, setIsUpdate] = useState(false);
   const [singledata, setSingleData] = useState(false);
-  const handleUpdate = (todoId) => {};
   const handleEdit = (bookId) => {
     setIsUpdate(true);
     const singleBook = books.find((book) => book.id === bookId);
@@ -20,6 +20,9 @@ const BookList = ({ search }) => {
   const handleStatus = (status) => {
     dispatch(filter(status));
   };
+  useEffect(() => {
+    dispatch(loadData());
+  }, [dispatch]);
   return (
     <>
       <main className="py-12 2xl:px-6">
@@ -66,14 +69,13 @@ const BookList = ({ search }) => {
                 .filter((item) =>
                   search.toLowerCase() === ""
                     ? item
-                    : item.bookName.toLowerCase().includes(search)
+                    : item.name.toLowerCase().includes(search)
                 )
                 .map((book) => (
                   <BookCard
                     key={book.id}
                     book={book}
                     setIsUpdate={setIsUpdate}
-                    handleUpdate={handleUpdate}
                     handleEdit={handleEdit}
                   ></BookCard>
                 ))}

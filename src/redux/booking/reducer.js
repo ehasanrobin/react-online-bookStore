@@ -1,4 +1,4 @@
-import { ADDBOOK, DELETEBOOK, UPDATEBOOK } from "./actionTypes";
+import { ADDBOOK, DELETEBOOK, LOADBOOK, UPDATEBOOK } from "./actionTypes";
 import { initialState } from "./initialState";
 
 const nextId = (state) => {
@@ -11,6 +11,8 @@ const nextId = (state) => {
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOADBOOK:
+      return action.payload;
     case ADDBOOK:
       const { bookName, author, thumbnail, price, rating, featured } =
         action.payload;
